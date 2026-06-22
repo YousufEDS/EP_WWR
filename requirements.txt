@@ -1,2 +1,3 @@
-streamlit
-geomeppy
+streamlit==1.46.1
+geomeppy==0.11.8
+eppy==0.5.63
