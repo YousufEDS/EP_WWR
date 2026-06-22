@@ -73,42 +73,47 @@ def standardize_window_constructions(idf):
     return idf
 
 
-def modify_wwr(idf, wwr):
+def modify_wwr(idf, wwr, safe_mode=False):
     """
     Modify Window-to-Wall Ratio using geomeppy
 
     Args:
         idf: IDF object
         wwr: Window-to-Wall Ratio (0-1)
+        safe_mode: If True, only removes shading. If False, tries to rebuild windows.
     """
     try:
-        # Remove shading first, then rebuild windows with geomeppy
+        # Step 1: remove shading (always recommended)
         idf = clean_shading(idf)
 
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            try:
-                idf.set_wwr(
-                    wwr=wwr,
-                    construction=None,
-                    force=True
-                )
-            except Exception as e:
-                error_msg = str(e)
-                if "Too many fields" in error_msg or "fields for object" in error_msg:
-                    raise Exception(
-                        "⚠️ IDF structure is too complex for automatic WWR modification. "
-                        "Please simplify the model or verify the IDF before retrying."
-                    )
-                elif "same construction" in error_msg:
-                    idf = standardize_window_constructions(idf)
+        # Step 2: rebuild windows with geomeppy (if not in safe mode)
+        if not safe_mode:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                try:
                     idf.set_wwr(
                         wwr=wwr,
                         construction=None,
                         force=True
                     )
-                else:
-                    raise
+                except Exception as e:
+                    error_msg = str(e)
+                    # Handle specific geomeppy errors
+                    if "Too many fields" in error_msg or "fields for object" in error_msg:
+                        raise Exception(
+                            "⚠️ IDF structure is too complex for automatic WWR modification. "
+                            "Try using 'Safe Mode' (Remove shading only) instead."
+                        )
+                    elif "same construction" in error_msg:
+                        # Try to fix construction mismatch
+                        idf = standardize_window_constructions(idf)
+                        idf.set_wwr(
+                            wwr=wwr,
+                            construction=None,
+                            force=True
+                        )
+                    else:
+                        raise
 
         return idf
     except Exception as e:
@@ -210,9 +215,15 @@ def main():
 
         final_wwr = wwr_precise
 
+        # Processing options
         st.divider()
         st.write("**Processing Options:**")
-        st.info("The app always uses geomeppy to rebuild window geometry after removing shading.")
+        processing_mode = st.radio(
+            "How to apply WWR changes:",
+            options=["Auto (Geomeppy rebuild)", "Safe (Remove shading only)"],
+            help="Auto: Rebuilds windows (may fail on complex models). Safe: Only removes shading (compatible with all models)",
+            index=1
+        )
 
     with col2:
         st.subheader("Preview")
@@ -242,9 +253,14 @@ def main():
 
                     st.info(f"✓ IDF loaded successfully")
 
-                    # Apply WWR modification with automatic geomeppy rebuilding
-                    idf = modify_wwr(idf, final_wwr)
-                    st.info(f"✓ WWR modified to {final_wwr:.1%}")
+                    # Apply WWR modification based on processing mode
+                    safe_mode = processing_mode == "Safe (Remove shading only)"
+                    idf = modify_wwr(idf, final_wwr, safe_mode=safe_mode)
+
+                    if safe_mode:
+                        st.info(f"✓ Shading removed (Safe mode - Windows not modified)")
+                    else:
+                        st.info(f"✓ WWR modified to {final_wwr:.1%}")
 
                     # Save to temp output file
                     output_filename = uploaded_file.name.replace(".idf", f"_WWR{int(final_wwr*100)}.idf")
