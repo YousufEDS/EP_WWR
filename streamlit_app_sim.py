@@ -123,17 +123,26 @@ def get_energyplus_exe(idd_path):
     Find the EnergyPlus executable from the idd path
     """
     idd_dir = Path(idd_path).parent
-    
+
     # Try to find the executable based on platform
     if os.name == 'nt':  # Windows
-        exe_name = "energyplus.exe"
+        exe_names = ["energyplus.exe"]
     else:  # Unix/Linux
-        exe_name = "energyplus"
-    
-    exe_path = idd_dir / exe_name
-    if exe_path.exists():
-        return str(exe_path)
-    
+        exe_names = ["energyplus"]
+
+    # List of directories to search relative to IDD directory
+    search_locations = [
+        idd_dir,  # Same directory as IDD
+        idd_dir / "bin",  # Common bin subdirectory
+        idd_dir.parent,  # Parent directory
+    ]
+
+    for search_dir in search_locations:
+        for exe_name in exe_names:
+            exe_path = search_dir / exe_name
+            if exe_path.exists():
+                return str(exe_path)
+
     return None
 
 
@@ -169,7 +178,12 @@ def run_simulation(idf_path, weather_path=None, idd_path=None):
         energyplus_exe = get_energyplus_exe(idd_path)
 
         if not energyplus_exe:
-            return {"success": False, "error": "EnergyPlus executable not found"}
+            idd_dir = Path(idd_path).parent
+            return {
+                "success": False,
+                "error": f"EnergyPlus executable not found in: {idd_dir}, {idd_dir / 'bin'}, or {idd_dir.parent}. "
+                         f"Please check that EnergyPlus is properly installed."
+            }
 
         # Try to set execute permissions on Linux/Unix
         if os.name != 'nt':
@@ -543,11 +557,23 @@ def main():
 
         st.divider()
 
+        # Debug info
+        with st.expander("🔍 Debug Info (Click to expand)"):
+            st.write(f"Modified IDF Path: {st.session_state.modified_idf_path}")
+            st.write(f"Selected IDD Path: {st.session_state.selected_idd_path}")
+            st.write(f"Selected Version: {st.session_state.selected_version}")
+
         # Simulate button
         if st.button("⚡ Simulate with Modified IDF", type="secondary", use_container_width=False, width=800):
-            try:
-                with st.spinner("🔄 Running EnergyPlus simulation..."):
-                    sim_result = run_simulation(st.session_state.modified_idf_path, idd_path=st.session_state.selected_idd_path)
+            # Validate required data
+            if not st.session_state.modified_idf_path:
+                st.error("❌ No modified IDF file found. Please process the IDF file first.")
+            elif not st.session_state.selected_idd_path:
+                st.error("❌ No EnergyPlus IDD path found. Please select an EnergyPlus version first.")
+            else:
+                try:
+                    with st.spinner("🔄 Running EnergyPlus simulation..."):
+                        sim_result = run_simulation(st.session_state.modified_idf_path, idd_path=st.session_state.selected_idd_path)
 
                     if sim_result and sim_result.get("success"):
                         simulation_metrics = extract_simulation_metrics(sim_result["output_dir"])
@@ -557,11 +583,11 @@ def main():
                         error_msg = sim_result.get("error", "Unknown error") if sim_result else "Unknown error"
                         st.error(f"❌ Simulation failed: {error_msg}")
 
-            except Exception as e:
-                st.error(f"❌ Error running simulation: {str(e)}")
-                import traceback
-                with st.expander("📋 Error Details"):
-                    st.code(traceback.format_exc())
+                except Exception as e:
+                    st.error(f"❌ Error running simulation: {str(e)}")
+                    import traceback
+                    with st.expander("📋 Error Details"):
+                        st.code(traceback.format_exc())
 
         # Show simulation results if available
         if st.session_state.simulation_metrics:
