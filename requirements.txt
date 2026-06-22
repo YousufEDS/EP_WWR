@@ -1,5 +1,3 @@
 streamlit
-geomeppy
-tk
-tcl
-python3-tk
+geomeppy==0.11.8
+eppy==0.5.63

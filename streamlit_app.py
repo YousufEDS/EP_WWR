@@ -2,22 +2,36 @@ import streamlit as st
 import os
 import tempfile
 import warnings
-from geomeppy import IDF
+from pathlib import Path
 
+# Workaround for Streamlit Cloud environments that lack Tk
+import sys
+import types
+
+fake_tk = types.ModuleType("tkinter")
+fake_tk.TclError = Exception
+sys.modules["tkinter"] = fake_tk
+
+from geomeppy import IDF
 warnings.filterwarnings('ignore', category=UserWarning)
 
 # EnergyPlus version mapping
+BASE_DIR = Path(__file__).parent
+
 ENERGYPLUS_VERSIONS = {
-    "v22.1.0": r"EnergyPlusV22-1-0\Energy+.idd",
-    "v23.2.0": r"EnergyPlusV23-2-0\Energy+.idd",
-    "v9.5.0": r"EnergyPlusV9-5-0\Energy+.idd",
-    "v9.4.0": r"EnergyPlusV9-4-0\Energy+.idd",
+    "v22.1.0": BASE_DIR / "EnergyPlusV22-1-0" / "Energy+.idd",
+    "v23.2.0": BASE_DIR / "EnergyPlusV23-2-0" / "Energy+.idd",
+    "v9.5.0": BASE_DIR / "EnergyPlusV9-5-0" / "Energy+.idd",
+    "v9.4.0": BASE_DIR / "EnergyPlusV9-4-0" / "Energy+.idd",
 }
 
 # Find available versions
 def get_available_versions():
-    return {v: path for v, path in ENERGYPLUS_VERSIONS.items() if os.path.exists(path)}
-
+    return {
+        v: str(path)
+        for v, path in ENERGYPLUS_VERSIONS.items()
+        if path.exists()
+    }
 
 def clean_shading(idf):
     """
