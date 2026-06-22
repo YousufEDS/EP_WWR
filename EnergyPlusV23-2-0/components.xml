@@ -1,0 +1,140 @@
+<Packages>
+    <ApplicationName>EnergyPlusV23-2-0</ApplicationName>
+    <ApplicationVersion>1.0.0</ApplicationVersion>
+    <Package>
+        <Name>CPPAPI</Name>
+        <Title>CPPAPI</Title>
+        <Description></Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>7767</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>CopyAndRegisterSystemDLLs</Name>
+        <Title>Copy and Register DLLs</Title>
+        <Description>This will copy and register system DLLs such as Fortran if they don't already exist</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>3514436</Size>
+        <ForcedInstallation>true</ForcedInstallation>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>CreateStartMenu</Name>
+        <Title>Start Menu links</Title>
+        <Description>Create Start Menu Links</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>0</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>Datasets</Name>
+        <Title>Datasets</Title>
+        <Description>Useful resources such as material and equipment performance data</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>27880784</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>Documentation</Name>
+        <Title>Documentation</Title>
+        <Description>EnergyPlus documentation in PDF format</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>58495588</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>ExampleFiles</Name>
+        <Title>Example Files</Title>
+        <Description>IDF Example Files</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>267938902</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>Libraries</Name>
+        <Title>Install required system libraries</Title>
+        <Description>Install compiler-provided system runtime libraries, and Windows Universal CRT libraries for app-local deployment</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>3474496</Size>
+        <ForcedInstallation>true</ForcedInstallation>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>Licenses</Name>
+        <Title>Licenses</Title>
+        <Description>License files for EnergyPlus</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>3222</Size>
+        <ForcedInstallation>true</ForcedInstallation>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>RegisterFileType</Name>
+        <Title>Associate with EP-Launch and IDFEditor</Title>
+        <Description>Associate *.idf, *.imf, and *.epg files with EP-Launch, *.ddy and *.expidf with IDFEditor.exe</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>0</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>Unspecified</Name>
+        <Title>Unspecified</Title>
+        <Description></Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>308542709</Size>
+        <ForcedInstallation>true</ForcedInstallation>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>WeatherData</Name>
+        <Title>Weather Data</Title>
+        <Description>EPW Weather Files</Description>
+        <SortingPriority>0</SortingPriority>
+        <TreeName moveChildren="false"></TreeName>
+        <Version>23.2.0-7636e6b3e9</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2025-10-09</InstallDate>
+        <Size>8545577</Size>
+        <Checkable>true</Checkable>
+    </Package>
+</Packages>

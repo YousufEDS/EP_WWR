@@ -1,0 +1,349 @@
+************************************* Invoked: Fri Dec 5 14:11:44 2025
+[0] Arguments: C:\Users\ruchi\Downloads\EnergyPlus-22.1.0-ed759b17ee-Windows-x86_64.exe
+[10] Operations sanity check succeeded.
+[16] Language: en-US
+[10866] Preparing meta information download...
+[17617] Installation space required: "932.27 MB" Temporary space required: "256.00 MB" Local repository size: "0.00 bytes"
+[17622] Tmp and install directories are on the same volume. Volume mount point: "C:\\" Free space available: "318.99 GB"
+[18687] backup  operation: Mkdir
+[18687] 	- arguments: C:/EnergyPlusV22-1-0
+[18687] Done
+[18688] perform  operation: Mkdir
+[18688] 	- arguments: C:/EnergyPlusV22-1-0
+[18689] Done
+[18692] Preparing the installation...
+[18692] Install size: 10 components
+[18692] Starting elevated process "C:\\Users\\ruchi\\Downloads\\EnergyPlus-22.1.0-ed759b17ee-Windows-x86_64.exe" with arguments " --start-server PRODUCTION,{ad304d1b-1ffe-4944-b7a5-a2dfe5bbb6ca},{7b3d8a4e-3a27-4741-9b0a-4b1bff469db9}"
+[23600] Finished starting elevated process.
+[23721] RegisterFileType: targetDir=C:\EnergyPlusV22-1-0
+[23724] regdll=C:\WINDOWS\SysWOW64\regsvr32.exe
+[23724] targetDir=C:\EnergyPlusV22-1-0
+[23724] tempDir=C:\EnergyPlusV22-1-0\temp
+[23725] Registering DLL: C:\WINDOWS\SysWOW64\regsvr32.exe /s C:\WINDOWS\SysWOW64\MSCOMCTL.OCX
+[23725] Registering DLL: C:\WINDOWS\SysWOW64\regsvr32.exe /s C:\WINDOWS\SysWOW64\ComDlg32.OCX
+[23725] Registering DLL: C:\WINDOWS\SysWOW64\regsvr32.exe /s C:\WINDOWS\SysWOW64\Graph32.ocx
+[23725] Registering DLL: C:\WINDOWS\SysWOW64\regsvr32.exe /s C:\WINDOWS\SysWOW64\MSINET.OCX
+[23725] Registering DLL: C:\WINDOWS\SysWOW64\regsvr32.exe /s C:\WINDOWS\SysWOW64\Vsflex7L.ocx
+[23725] Registering DLL: C:\WINDOWS\SysWOW64\regsvr32.exe /s C:\WINDOWS\SysWOW64\Msflxgrd.ocx
+[23737] Target directory for Start Menu Shortcuts: C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0
+[23755] Installing component Associate with EP-Launch and IDFEditor
+[23756] backup RegisterFileType operation: Execute
+[23756] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\EP-Launch.epg, /f
+[23756] Done
+[23756] perform RegisterFileType operation: Execute
+[23756] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\EP-Launch.epg, /f
+[23769] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "DELETE HKEY_CLASSES_ROOT\\EP-Launch.epg /f
+[23795] Done
+[23796] backup RegisterFileType operation: Execute
+[23796] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\EP-Launch.idf, /f
+[23796] Done
+[23796] perform RegisterFileType operation: Execute
+[23796] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\EP-Launch.idf, /f
+[23806] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "DELETE HKEY_CLASSES_ROOT\\EP-Launch.idf /f
+[23831] Done
+[23832] backup RegisterFileType operation: Execute
+[23832] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\EP-Launch.imf, /f
+[23832] Done
+[23832] perform RegisterFileType operation: Execute
+[23832] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\EP-Launch.imf, /f
+[23840] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "DELETE HKEY_CLASSES_ROOT\\EP-Launch.imf /f
+[23869] Done
+[23870] backup RegisterFileType operation: Execute
+[23870] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\IDFEditor.ddy, /f
+[23870] Done
+[23870] perform RegisterFileType operation: Execute
+[23870] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\IDFEditor.ddy, /f
+[23877] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "DELETE HKEY_CLASSES_ROOT\\IDFEditor.ddy /f
+[23905] Done
+[23905] backup RegisterFileType operation: Execute
+[23905] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\IDFEditor.expidf, /f
+[23905] Done
+[23905] perform RegisterFileType operation: Execute
+[23905] 	- arguments: {0,1}, C:\WINDOWS\System32\reg.exe, DELETE, HKEY_CLASSES_ROOT\IDFEditor.expidf, /f
+[23916] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "DELETE HKEY_CLASSES_ROOT\\IDFEditor.expidf /f
+[23942] Done
+[23943] "RegisterFileType" as admin: true
+[23943] backup RegisterFileType operation: RegisterFileType
+[23943] 	- arguments: idf, C:\EnergyPlusV22-1-0\EP-Launch.exe %1, EnergyPlus Input Data File, text/plain
+[23943] Done
+[23943] perform RegisterFileType operation: RegisterFileType
+[23943] 	- arguments: idf, C:\EnergyPlusV22-1-0\EP-Launch.exe %1, EnergyPlus Input Data File, text/plain
+[23953] Done
+[23954] "RegisterFileType" as admin: true
+[23954] backup RegisterFileType operation: RegisterFileType
+[23954] 	- arguments: imf, C:\EnergyPlusV22-1-0\EP-Launch.exe %1, EnergyPlus Input Macro File, text/plain
+[23954] Done
+[23955] perform RegisterFileType operation: RegisterFileType
+[23955] 	- arguments: imf, C:\EnergyPlusV22-1-0\EP-Launch.exe %1, EnergyPlus Input Macro File, text/plain
+[23974] Done
+[23975] "RegisterFileType" as admin: true
+[23975] backup RegisterFileType operation: RegisterFileType
+[23975] 	- arguments: epg, C:\EnergyPlusV22-1-0\EP-Launch.exe %1, EnergyPlus Group File, text/plain
+[23975] Done
+[23975] perform RegisterFileType operation: RegisterFileType
+[23975] 	- arguments: epg, C:\EnergyPlusV22-1-0\EP-Launch.exe %1, EnergyPlus Group File, text/plain
+[23988] Done
+[23990] "RegisterFileType" as admin: true
+[23990] backup RegisterFileType operation: RegisterFileType
+[23990] 	- arguments: ddy, C:\EnergyPlusV22-1-0\PreProcess\IDFEditor\IDFEditor.exe %1, EnergyPlus Location and Design Day Data, text/plain
+[23990] Done
+[23990] perform RegisterFileType operation: RegisterFileType
+[23990] 	- arguments: ddy, C:\EnergyPlusV22-1-0\PreProcess\IDFEditor\IDFEditor.exe %1, EnergyPlus Location and Design Day Data, text/plain
+[23998] Done
+[23999] "RegisterFileType" as admin: true
+[23999] backup RegisterFileType operation: RegisterFileType
+[23999] 	- arguments: expidf, C:\EnergyPlusV22-1-0\PreProcess\IDFEditor\IDFEditor.exe %1, EnergyPlus Expand Objects Input Data File, text/plain
+[23999] Done
+[24000] perform RegisterFileType operation: RegisterFileType
+[24000] 	- arguments: expidf, C:\EnergyPlusV22-1-0\PreProcess\IDFEditor\IDFEditor.exe %1, EnergyPlus Expand Objects Input Data File, text/plain
+[24008] Done
+[24015] Installing component Copy and Register DLLs
+[24015] backup CopyAndRegisterSystemDLLs operation: Extract
+[24015] 	- arguments: installer://CopyAndRegisterSystemDLLs/22.1.0-ed759b17eetemp.7z, C:/EnergyPlusV22-1-0
+[24015] Done
+[24016] perform CopyAndRegisterSystemDLLs operation: Extract
+[24016] 	- arguments: installer://CopyAndRegisterSystemDLLs/22.1.0-ed759b17eetemp.7z, C:/EnergyPlusV22-1-0
+[24147] Done
+[24148] "Execute" as admin: true
+[24148] backup CopyAndRegisterSystemDLLs operation: Execute
+[24148] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\MSCOMCTL.OCX
+[24148] Done
+[24149] perform CopyAndRegisterSystemDLLs operation: Execute
+[24149] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\MSCOMCTL.OCX
+[24151] C:\\WINDOWS\\SysWOW64\\regsvr32.exe" started, arguments: "/s C:\\WINDOWS\\SysWOW64\\MSCOMCTL.OCX
+[24318] Done
+[24319] "Execute" as admin: true
+[24319] backup CopyAndRegisterSystemDLLs operation: Execute
+[24319] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\ComDlg32.OCX
+[24319] Done
+[24320] perform CopyAndRegisterSystemDLLs operation: Execute
+[24320] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\ComDlg32.OCX
+[24321] C:\\WINDOWS\\SysWOW64\\regsvr32.exe" started, arguments: "/s C:\\WINDOWS\\SysWOW64\\ComDlg32.OCX
+[24386] Done
+[24387] "Execute" as admin: true
+[24387] backup CopyAndRegisterSystemDLLs operation: Execute
+[24387] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\Graph32.ocx
+[24387] Done
+[24387] perform CopyAndRegisterSystemDLLs operation: Execute
+[24387] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\Graph32.ocx
+[24389] C:\\WINDOWS\\SysWOW64\\regsvr32.exe" started, arguments: "/s C:\\WINDOWS\\SysWOW64\\Graph32.ocx
+[24460] Done
+[24461] "Execute" as admin: true
+[24461] backup CopyAndRegisterSystemDLLs operation: Execute
+[24461] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\MSINET.OCX
+[24461] Done
+[24462] perform CopyAndRegisterSystemDLLs operation: Execute
+[24462] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\MSINET.OCX
+[24465] C:\\WINDOWS\\SysWOW64\\regsvr32.exe" started, arguments: "/s C:\\WINDOWS\\SysWOW64\\MSINET.OCX
+[24532] Done
+[24533] "Execute" as admin: true
+[24533] backup CopyAndRegisterSystemDLLs operation: Execute
+[24533] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\Vsflex7L.ocx
+[24533] Done
+[24534] perform CopyAndRegisterSystemDLLs operation: Execute
+[24534] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\Vsflex7L.ocx
+[24536] C:\\WINDOWS\\SysWOW64\\regsvr32.exe" started, arguments: "/s C:\\WINDOWS\\SysWOW64\\Vsflex7L.ocx
+[24597] Done
+[24598] "Execute" as admin: true
+[24598] backup CopyAndRegisterSystemDLLs operation: Execute
+[24598] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\Msflxgrd.ocx
+[24598] Done
+[24599] perform CopyAndRegisterSystemDLLs operation: Execute
+[24599] 	- arguments: C:\WINDOWS\SysWOW64\regsvr32.exe, /s, C:\WINDOWS\SysWOW64\Msflxgrd.ocx
+[24601] C:\\WINDOWS\\SysWOW64\\regsvr32.exe" started, arguments: "/s C:\\WINDOWS\\SysWOW64\\Msflxgrd.ocx
+[24653] Done
+[24654] "Execute" as admin: true
+[24654] backup CopyAndRegisterSystemDLLs operation: Execute
+[24654] 	- arguments: cmd, /C, rmdir, /S, /Q, C:\EnergyPlusV22-1-0\temp
+[24654] Done
+[24655] perform CopyAndRegisterSystemDLLs operation: Execute
+[24655] 	- arguments: cmd, /C, rmdir, /S, /Q, C:\EnergyPlusV22-1-0\temp
+[24656] cmd" started, arguments: "/C rmdir /S /Q C:\\EnergyPlusV22-1-0\\temp
+[24693] Done
+[24700] Installing component Datasets
+[24700] backup Datasets operation: Extract
+[24700] 	- arguments: installer://Datasets/22.1.0-ed759b17eeDataSets.7z, C:/EnergyPlusV22-1-0
+[24700] Done
+[24700] perform Datasets operation: Extract
+[24700] 	- arguments: installer://Datasets/22.1.0-ed759b17eeDataSets.7z, C:/EnergyPlusV22-1-0
+[24868] Done
+[24868] backup Datasets operation: Extract
+[24868] 	- arguments: installer://Datasets/22.1.0-ed759b17eeMacroDataSets.7z, C:/EnergyPlusV22-1-0
+[24868] Done
+[24868] perform Datasets operation: Extract
+[24868] 	- arguments: installer://Datasets/22.1.0-ed759b17eeMacroDataSets.7z, C:/EnergyPlusV22-1-0
+[24896] Done
+[24901] Installing component Documentation
+[24901] backup Documentation operation: Extract
+[24901] 	- arguments: installer://Documentation/22.1.0-ed759b17eeDocumentation.7z, C:/EnergyPlusV22-1-0
+[24901] Done
+[24902] perform Documentation operation: Extract
+[24902] 	- arguments: installer://Documentation/22.1.0-ed759b17eeDocumentation.7z, C:/EnergyPlusV22-1-0
+[28146] Done
+[28149] Installing component Example Files
+[28149] backup ExampleFiles operation: Extract
+[28149] 	- arguments: installer://ExampleFiles/22.1.0-ed759b17eeExampleFiles.7z, C:/EnergyPlusV22-1-0
+[28149] Done
+[28149] perform ExampleFiles operation: Extract
+[28149] 	- arguments: installer://ExampleFiles/22.1.0-ed759b17eeExampleFiles.7z, C:/EnergyPlusV22-1-0
+[29949] Done
+[29951] Installing component Install required system libraries
+[29951] backup Libraries operation: Extract
+[29951] 	- arguments: installer://Libraries/22.1.0-ed759b17eecontent.7z, C:/EnergyPlusV22-1-0
+[29951] Done
+[29951] perform Libraries operation: Extract
+[29951] 	- arguments: installer://Libraries/22.1.0-ed759b17eecontent.7z, C:/EnergyPlusV22-1-0
+[30082] Done
+[30085] Installing component Licenses
+[30087] backup Licenses operation: Extract
+[30087] 	- arguments: installer://Licenses/22.1.0-ed759b17eecontent.7z, C:/EnergyPlusV22-1-0
+[30087] Done
+[30087] perform Licenses operation: Extract
+[30087] 	- arguments: installer://Licenses/22.1.0-ed759b17eecontent.7z, C:/EnergyPlusV22-1-0
+[30097] Done
+[30097] backup Licenses operation: License
+[30097] 	- arguments:
+[30097] Done
+[30097] perform Licenses operation: License
+[30097] 	- arguments:
+[30098] Done
+[30100] Installing component Start Menu links
+[30101] backup CreateStartMenu operation: CreateShortcut
+[30101] 	- arguments: C:/EnergyPlusV22-1-0/Documentation/index.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EnergyPlus Documentation.lnk
+[30101] Done
+[30101] perform CreateStartMenu operation: CreateShortcut
+[30101] 	- arguments: C:/EnergyPlusV22-1-0/Documentation/index.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EnergyPlus Documentation.lnk
+[30147] Done
+[30147] backup CreateStartMenu operation: CreateShortcut
+[30147] 	- arguments: C:/EnergyPlusV22-1-0/PostProcess/EP-Compare/EP-Compare.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EP-Compare.lnk
+[30147] Done
+[30147] perform CreateStartMenu operation: CreateShortcut
+[30147] 	- arguments: C:/EnergyPlusV22-1-0/PostProcess/EP-Compare/EP-Compare.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EP-Compare.lnk
+[30158] Done
+[30159] backup CreateStartMenu operation: CreateShortcut
+[30159] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/EPDraw/EPDrawGUI.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EPDrawGUI.lnk
+[30159] Done
+[30159] perform CreateStartMenu operation: CreateShortcut
+[30159] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/EPDraw/EPDrawGUI.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EPDrawGUI.lnk
+[30166] Done
+[30166] backup CreateStartMenu operation: CreateShortcut
+[30166] 	- arguments: C:/EnergyPlusV22-1-0/EP-Launch.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EP-Launch.lnk
+[30166] Done
+[30166] perform CreateStartMenu operation: CreateShortcut
+[30166] 	- arguments: C:/EnergyPlusV22-1-0/EP-Launch.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/EP-Launch.lnk
+[30177] Done
+[30178] backup CreateStartMenu operation: CreateShortcut
+[30178] 	- arguments: C:/EnergyPlusV22-1-0/ExampleFiles/ExampleFiles.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/Example Files Summary.lnk
+[30178] Done
+[30178] perform CreateStartMenu operation: CreateShortcut
+[30178] 	- arguments: C:/EnergyPlusV22-1-0/ExampleFiles/ExampleFiles.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/Example Files Summary.lnk
+[30185] Done
+[30186] backup CreateStartMenu operation: CreateShortcut
+[30186] 	- arguments: C:/EnergyPlusV22-1-0/ExampleFiles/ExampleFiles-ObjectsLink.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/ExampleFiles Link to Objects.lnk
+[30186] Done
+[30186] perform CreateStartMenu operation: CreateShortcut
+[30186] 	- arguments: C:/EnergyPlusV22-1-0/ExampleFiles/ExampleFiles-ObjectsLink.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/ExampleFiles Link to Objects.lnk
+[30196] Done
+[30196] backup CreateStartMenu operation: CreateShortcut
+[30196] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/IDFEditor/IDFEditor.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/IDFEditor.lnk
+[30196] Done
+[30196] perform CreateStartMenu operation: CreateShortcut
+[30196] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/IDFEditor/IDFEditor.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/IDFEditor.lnk
+[30205] Done
+[30205] backup CreateStartMenu operation: CreateShortcut
+[30205] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/IDFVersionUpdater/IDFVersionUpdater.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/IDFVersionUpdater.lnk
+[30205] Done
+[30205] perform CreateStartMenu operation: CreateShortcut
+[30205] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/IDFVersionUpdater/IDFVersionUpdater.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/IDFVersionUpdater.lnk
+[30213] Done
+[30214] backup CreateStartMenu operation: CreateShortcut
+[30214] 	- arguments: C:/EnergyPlusV22-1-0/readme.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/Readme Notes.lnk
+[30214] Done
+[30214] perform CreateStartMenu operation: CreateShortcut
+[30214] 	- arguments: C:/EnergyPlusV22-1-0/readme.html, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/Readme Notes.lnk
+[30223] Done
+[30223] backup CreateStartMenu operation: CreateShortcut
+[30223] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/WeatherConverter/Weather.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/Weather Statistics and Conversions.lnk
+[30223] Done
+[30224] perform CreateStartMenu operation: CreateShortcut
+[30224] 	- arguments: C:/EnergyPlusV22-1-0/PreProcess/WeatherConverter/Weather.exe, C:\Users\ruchi\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\EnergyPlusV22-1-0/Weather Statistics and Conversions.lnk
+[30232] Done
+[30236] Installing component Unspecified
+[30236] backup Unspecified operation: Extract
+[30236] 	- arguments: installer://Unspecified/22.1.0-ed759b17eecontent.7z, C:/EnergyPlusV22-1-0
+[30236] Done
+[30237] perform Unspecified operation: Extract
+[30237] 	- arguments: installer://Unspecified/22.1.0-ed759b17eecontent.7z, C:/EnergyPlusV22-1-0
+[31730] Done
+[31730] backup Unspecified operation: Extract
+[31730] 	- arguments: installer://Unspecified/22.1.0-ed759b17eeinclude.7z, C:/EnergyPlusV22-1-0
+[31730] Done
+[31731] perform Unspecified operation: Extract
+[31731] 	- arguments: installer://Unspecified/22.1.0-ed759b17eeinclude.7z, C:/EnergyPlusV22-1-0
+[31760] Done
+[31760] backup Unspecified operation: Extract
+[31760] 	- arguments: installer://Unspecified/22.1.0-ed759b17eePostProcess.7z, C:/EnergyPlusV22-1-0
+[31760] Done
+[31761] perform Unspecified operation: Extract
+[31761] 	- arguments: installer://Unspecified/22.1.0-ed759b17eePostProcess.7z, C:/EnergyPlusV22-1-0
+[32033] Done
+[32033] backup Unspecified operation: Extract
+[32033] 	- arguments: installer://Unspecified/22.1.0-ed759b17eePreProcess.7z, C:/EnergyPlusV22-1-0
+[32033] Done
+[32033] perform Unspecified operation: Extract
+[32033] 	- arguments: installer://Unspecified/22.1.0-ed759b17eePreProcess.7z, C:/EnergyPlusV22-1-0
+[34205] Done
+[34206] backup Unspecified operation: Extract
+[34206] 	- arguments: installer://Unspecified/22.1.0-ed759b17eepyenergyplus.7z, C:/EnergyPlusV22-1-0
+[34206] Done
+[34206] perform Unspecified operation: Extract
+[34206] 	- arguments: installer://Unspecified/22.1.0-ed759b17eepyenergyplus.7z, C:/EnergyPlusV22-1-0
+[34223] Done
+[34223] backup Unspecified operation: Extract
+[34223] 	- arguments: installer://Unspecified/22.1.0-ed759b17eepython_standard_lib.7z, C:/EnergyPlusV22-1-0
+[34223] Done
+[34223] perform Unspecified operation: Extract
+[34223] 	- arguments: installer://Unspecified/22.1.0-ed759b17eepython_standard_lib.7z, C:/EnergyPlusV22-1-0
+[36753] Done
+[36754] backup Unspecified operation: Extract
+[36754] 	- arguments: installer://Unspecified/22.1.0-ed759b17eeworkflows.7z, C:/EnergyPlusV22-1-0
+[36754] Done
+[36754] perform Unspecified operation: Extract
+[36754] 	- arguments: installer://Unspecified/22.1.0-ed759b17eeworkflows.7z, C:/EnergyPlusV22-1-0
+[36764] Done
+[36764] backup Unspecified operation: Execute
+[36764] 	- arguments: C:\WINDOWS\System32\reg.exe, ADD, HKEY_CURRENT_USER\Software\VB and VBA Program Settings\EP-Launch\UpdateCheck, /v, AutoCheck, /d, True, /f
+[36764] Done
+[36764] perform Unspecified operation: Execute
+[36764] 	- arguments: C:\WINDOWS\System32\reg.exe, ADD, HKEY_CURRENT_USER\Software\VB and VBA Program Settings\EP-Launch\UpdateCheck, /v, AutoCheck, /d, True, /f
+[36773] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "ADD HKEY_CURRENT_USER\\Software\\VB and VBA Program Settings\\EP-Launch\\UpdateCheck /v AutoCheck /d True /f
+[36803] The operation completed successfully.\r\r\n
+[36804] Done
+[36805] backup Unspecified operation: Execute
+[36805] 	- arguments: C:\WINDOWS\System32\reg.exe, ADD, HKEY_CURRENT_USER\Software\VB and VBA Program Settings\EP-Launch\UpdateCheck, /v, CheckURL, /d, http://nrel.github.io/EnergyPlus/epupdate.htm, /f
+[36805] Done
+[36805] perform Unspecified operation: Execute
+[36805] 	- arguments: C:\WINDOWS\System32\reg.exe, ADD, HKEY_CURRENT_USER\Software\VB and VBA Program Settings\EP-Launch\UpdateCheck, /v, CheckURL, /d, http://nrel.github.io/EnergyPlus/epupdate.htm, /f
+[36813] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "ADD HKEY_CURRENT_USER\\Software\\VB and VBA Program Settings\\EP-Launch\\UpdateCheck /v CheckURL /d http://nrel.github.io/EnergyPlus/epupdate.htm /f
+[36842] The operation completed successfully.\r\r\n
+[36843] Done
+[36845] backup Unspecified operation: Execute
+[36845] 	- arguments: C:\WINDOWS\System32\reg.exe, ADD, HKEY_CURRENT_USER\Software\VB and VBA Program Settings\EP-Launch\UpdateCheck, /v, LastAnchor, /d, #22.1.0-ed759b17ee, /f
+[36845] Done
+[36845] perform Unspecified operation: Execute
+[36845] 	- arguments: C:\WINDOWS\System32\reg.exe, ADD, HKEY_CURRENT_USER\Software\VB and VBA Program Settings\EP-Launch\UpdateCheck, /v, LastAnchor, /d, #22.1.0-ed759b17ee, /f
+[36854] C:\\WINDOWS\\System32\\reg.exe" started, arguments: "ADD HKEY_CURRENT_USER\\Software\\VB and VBA Program Settings\\EP-Launch\\UpdateCheck /v LastAnchor /d #22.1.0-ed759b17ee /f
+[36880] The operation completed successfully.\r\r\n
+[36880] Done
+[36885] Installing component Weather Data
+[36885] backup WeatherData operation: Extract
+[36885] 	- arguments: installer://WeatherData/22.1.0-ed759b17eeWeatherData.7z, C:/EnergyPlusV22-1-0
+[36885] Done
+[36885] perform WeatherData operation: Extract
+[36885] 	- arguments: installer://WeatherData/22.1.0-ed759b17eeWeatherData.7z, C:/EnergyPlusV22-1-0
+[36973] Done
+[36980] Writing maintenance tool: "C:/EnergyPlusV22-1-0/maintenancetool.exe.new"
+[36981] Writing maintenance tool.
+[37066] Wrote permissions for maintenance tool.
+[37127] Maintenance tool hard restart: false.
+[39190] Installation finished!

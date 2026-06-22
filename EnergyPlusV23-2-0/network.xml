@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network>
+    <ProxyType>1</ProxyType>
+    <Ftp>
+        <Host></Host>
+        <Port>0</Port>
+        <Username></Username>
+        <Password></Password>
+    </Ftp>
+    <Http>
+        <Host></Host>
+        <Port>0</Port>
+        <Username></Username>
+        <Password></Password>
+    </Http>
+    <Repositories/>
+    <LocalCachePath>C:/Users/ruchi/AppData/Local/cache\qt-installer-framework\d68dce22-1025-3da9-a006-ad265741de0c</LocalCachePath>
+</Network>
