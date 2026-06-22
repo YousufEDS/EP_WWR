@@ -137,42 +137,46 @@ def main():
             st.write(f"  • {version}: {path}")
         st.stop()
 
-    # Sidebar for version selection
-    st.sidebar.title("⚙️ Settings")
-    selected_version = st.sidebar.selectbox(
+    # Hide the sidebar and show version selection on the main page
+    st.markdown(
+        "<style>div[data-testid='stSidebar'] {display: none;} "
+        "section[data-testid='stSidebarNav'] {display: none;}</style>",
+        unsafe_allow_html=True,
+    )
+
+    st.subheader("EnergyPlus Version")
+    selected_version = st.selectbox(
         "Select EnergyPlus Version",
         options=list(available_versions.keys()),
-        help="Select the EnergyPlus version your IDF file is from"
+        help="Select the EnergyPlus version your IDF file is from",
+        width = 200
     )
 
     idd_path = available_versions[selected_version]
 
-    # Only set IDD if version changed
     if st.session_state.current_idd_version != selected_version:
         try:
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
-                # Try to set the IDD path
                 IDF.setiddname(idd_path)
             st.session_state.current_idd_version = selected_version
             st.session_state.idd_set = True
-            st.sidebar.success(f"✅ Using EnergyPlus {selected_version}")
-            st.sidebar.info(f"📂 IDD File: {idd_path}")
+            st.success(f"✅ Using EnergyPlus {selected_version}", width = 300)
+            # st.info(f"📂 IDD File: {idd_path}")
         except Exception as e:
             error_msg = str(e)
-            # If error is about IDD already being set, it's okay - just update state
             if "IDD file is set to" in error_msg:
                 st.session_state.current_idd_version = selected_version
                 st.session_state.idd_set = True
-                st.sidebar.info(f"ℹ️ IDD already initialized")
-                st.sidebar.success(f"✅ Using EnergyPlus {selected_version}")
-                st.sidebar.info(f"📂 IDD File: {idd_path}")
+                st.info(f"ℹ️ IDD already initialized")
+                st.success(f"✅ Using EnergyPlus {selected_version}")
+                st.info(f"📂 IDD File: {idd_path}")
             else:
-                st.sidebar.error(f"❌ Error: {error_msg}")
-                st.sidebar.info(f"IDD Path: {idd_path}")
+                st.error(f"❌ Error: {error_msg}")
+                st.info(f"IDD Path: {idd_path}")
     elif st.session_state.idd_set:
-        st.sidebar.success(f"✅ Using EnergyPlus {selected_version}")
-        st.sidebar.info(f"📂 IDD File: {idd_path}")
+        st.success(f"✅ Using EnergyPlus {selected_version}")
+        st.info(f"📂 IDD File: {idd_path}")
 
     # Create columns for layout
     col1, col2 = st.columns([1, 1])
@@ -184,7 +188,8 @@ def main():
         uploaded_file = st.file_uploader(
             "📁 Upload your IDF file",
             type=["idf"],
-            help="Select an EnergyPlus IDF file to modify"
+            help="Select an EnergyPlus IDF file to modify",
+            width = 500
         )
 
         # WWR input - using slider
@@ -198,17 +203,7 @@ def main():
             help="WWR ranges from 0.0 (no windows) to 1.0 (100% windows)"
         )
 
-        # Alternative: Number input for precise values
-        wwr_precise = st.number_input(
-            "Or enter WWR as decimal (0-1):",
-            min_value=0.0,
-            max_value=1.0,
-            value=wwr_input,
-            step=0.01,
-            format="%.2f"
-        )
-
-        final_wwr = wwr_precise
+        final_wwr = wwr_input
 
         st.divider()
         st.write("**Processing Options:**")
@@ -222,7 +217,7 @@ def main():
     st.divider()
 
     # Process button
-    if st.button("🔄 Process IDF File", type="primary", use_container_width=True):
+    if st.button("🔄 Process IDF File", type="primary", use_container_width=False, width = 800):
         if uploaded_file is None:
             st.error("❌ Please upload an IDF file first")
         else:
