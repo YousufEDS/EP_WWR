@@ -1,8 +1,6 @@
 import streamlit as st
 import os
-import tempfile
 import warnings
-from pathlib import Path
 from geomeppy import IDF
 
 warnings.filterwarnings('ignore', category=UserWarning)
