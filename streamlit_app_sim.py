@@ -7,6 +7,9 @@ import subprocess
 import re
 import json
 
+# Detect environment
+IS_STREAMLIT_CLOUD = "/mount/src" in str(Path.home()) or "STREAMLIT_SERVER_HEADLESS" in os.environ
+
 # Workaround for Streamlit Cloud environments that lack Tk
 import sys
 import types
@@ -122,7 +125,11 @@ def get_energyplus_exe(idd_path):
     """
     Find the EnergyPlus executable from the idd path
     """
-    idd_dir = Path(idd_path).parent
+    if not idd_path:
+        return None
+
+    idd_path = Path(idd_path)
+    idd_dir = idd_path.parent
 
     # Try to find the executable based on platform
     if os.name == 'nt':  # Windows
@@ -178,11 +185,22 @@ def run_simulation(idf_path, weather_path=None, idd_path=None):
         energyplus_exe = get_energyplus_exe(idd_path)
 
         if not energyplus_exe:
-            idd_dir = Path(idd_path).parent
+            idd_path_obj = Path(idd_path) if idd_path else None
+            idd_dir = idd_path_obj.parent if idd_path_obj else "Unknown"
+
+            searched_paths = []
+            if idd_path_obj:
+                searched_paths = [
+                    str(idd_dir),
+                    str(idd_dir / "bin"),
+                    str(idd_dir.parent)
+                ]
+
             return {
                 "success": False,
-                "error": f"EnergyPlus executable not found in: {idd_dir}, {idd_dir / 'bin'}, or {idd_dir.parent}. "
-                         f"Please check that EnergyPlus is properly installed."
+                "error": f"EnergyPlus executable not found. IDD path: {idd_path}. "
+                         f"Searched in: {searched_paths}. "
+                         f"Please verify that EnergyPlus is installed and accessible."
             }
 
         # Try to set execute permissions on Linux/Unix
@@ -562,32 +580,46 @@ def main():
             st.write(f"Modified IDF Path: {st.session_state.modified_idf_path}")
             st.write(f"Selected IDD Path: {st.session_state.selected_idd_path}")
             st.write(f"Selected Version: {st.session_state.selected_version}")
+            st.write(f"Environment: {'Streamlit Cloud (Linux)' if IS_STREAMLIT_CLOUD else 'Local/Desktop'}")
 
-        # Simulate button
-        if st.button("⚡ Simulate with Modified IDF", type="secondary", use_container_width=False, width=800):
-            # Validate required data
-            if not st.session_state.modified_idf_path:
-                st.error("❌ No modified IDF file found. Please process the IDF file first.")
-            elif not st.session_state.selected_idd_path:
-                st.error("❌ No EnergyPlus IDD path found. Please select an EnergyPlus version first.")
-            else:
-                try:
-                    with st.spinner("🔄 Running EnergyPlus simulation..."):
-                        sim_result = run_simulation(st.session_state.modified_idf_path, idd_path=st.session_state.selected_idd_path)
+        # Show environment-specific notice
+        if IS_STREAMLIT_CLOUD:
+            st.warning(
+                "⚠️ **Streamlit Cloud Limitation**: This app is running on Streamlit Cloud (Linux environment), "
+                "which doesn't support EnergyPlus executables (Windows-only). Simulation is **disabled** here.\n\n"
+                "**To complete your analysis:**\n"
+                "1. ✅ Download the modified IDF file (button above)\n"
+                "2. 📥 Install [EnergyPlus](https://energyplus.net) on your computer\n"
+                "3. 🖥️ Run simulation locally: `energyplus -w weatherfile.epw -d output yourfile.idf`\n"
+                "4. 📊 View results in the generated HTML reports\n\n"
+                "_Alternatively, deploy this app locally on Windows or use a Windows-based server._"
+            )
+        else:
+            # Simulate button (only shown on local/Windows environments)
+            if st.button("⚡ Simulate with Modified IDF", type="secondary", use_container_width=False, width=800):
+                # Validate required data
+                if not st.session_state.modified_idf_path:
+                    st.error("❌ No modified IDF file found. Please process the IDF file first.")
+                elif not st.session_state.selected_idd_path:
+                    st.error("❌ No EnergyPlus IDD path found. Please select an EnergyPlus version first.")
+                else:
+                    try:
+                        with st.spinner("🔄 Running EnergyPlus simulation..."):
+                            sim_result = run_simulation(st.session_state.modified_idf_path, idd_path=st.session_state.selected_idd_path)
 
-                    if sim_result and sim_result.get("success"):
-                        simulation_metrics = extract_simulation_metrics(sim_result["output_dir"])
-                        st.session_state.simulation_metrics = simulation_metrics
-                        st.success("✅ Simulation completed successfully!")
-                    else:
-                        error_msg = sim_result.get("error", "Unknown error") if sim_result else "Unknown error"
-                        st.error(f"❌ Simulation failed: {error_msg}")
+                        if sim_result and sim_result.get("success"):
+                            simulation_metrics = extract_simulation_metrics(sim_result["output_dir"])
+                            st.session_state.simulation_metrics = simulation_metrics
+                            st.success("✅ Simulation completed successfully!")
+                        else:
+                            error_msg = sim_result.get("error", "Unknown error") if sim_result else "Unknown error"
+                            st.error(f"❌ Simulation failed: {error_msg}")
 
-                except Exception as e:
-                    st.error(f"❌ Error running simulation: {str(e)}")
-                    import traceback
-                    with st.expander("📋 Error Details"):
-                        st.code(traceback.format_exc())
+                    except Exception as e:
+                        st.error(f"❌ Error running simulation: {str(e)}")
+                        import traceback
+                        with st.expander("📋 Error Details"):
+                            st.code(traceback.format_exc())
 
         # Show simulation results if available
         if st.session_state.simulation_metrics:
