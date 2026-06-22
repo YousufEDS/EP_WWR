@@ -155,34 +155,43 @@ def find_weather_file(idd_path):
 def run_simulation(idf_path, weather_path=None, idd_path=None):
     """
     Run EnergyPlus simulation using subprocess
-    
+
     Args:
         idf_path: Path to the IDF file
         weather_path: Path to weather file (EPW)
         idd_path: Path to IDD file
-    
+
     Returns:
         Dictionary with simulation results
     """
     try:
-        # Get EnergyPlus executable path
-        idd_dir = Path(idd_path).parent
-        energyplus_exe = idd_dir / "energyplus.exe"
-        
-        if not energyplus_exe.exists():
+        # Get EnergyPlus executable path using platform-aware function
+        energyplus_exe = get_energyplus_exe(idd_path)
+
+        if not energyplus_exe:
             return {"success": False, "error": "EnergyPlus executable not found"}
-        
+
+        # Try to set execute permissions on Linux/Unix
+        if os.name != 'nt':
+            try:
+                import stat
+                exe_stat = os.stat(energyplus_exe)
+                os.chmod(energyplus_exe, exe_stat.st_mode | stat.S_IEXEC)
+            except Exception as e:
+                return {"success": False, "error": f"Cannot set execute permissions on EnergyPlus executable: {str(e)}"}
+
         # Auto-detect weather file if not provided
         if not weather_path:
             weather_path = find_weather_file(idd_path)
-        
+
         if not weather_path:
             return {"success": False, "error": "No weather file (.epw) found"}
-        
+
         # Create output directory
         output_dir = Path(idf_path).parent / "simulation_output"
         output_dir.mkdir(exist_ok=True)
-        
+
+
         # Build command
         cmd = [
             str(energyplus_exe),
@@ -191,7 +200,7 @@ def run_simulation(idf_path, weather_path=None, idd_path=None):
             "-d", str(output_dir),
             str(idf_path)
         ]
-        
+
         # Run simulation
         result = subprocess.run(
             cmd,
@@ -199,7 +208,7 @@ def run_simulation(idf_path, weather_path=None, idd_path=None):
             timeout=600,
             text=True
         )
-        
+
         if result.returncode == 0:
             # Rename default HTML file if it exists
             default_html = output_dir / "eplustbl.htm"
@@ -207,12 +216,12 @@ def run_simulation(idf_path, weather_path=None, idd_path=None):
                 idf_name = Path(idf_path).stem
                 new_html_path = output_dir / f"{idf_name}.htm"
                 default_html.rename(new_html_path)
-            
+
             return {"success": True, "output_dir": str(output_dir)}
         else:
             error_msg = result.stderr if result.stderr else "Simulation failed with unknown error"
             return {"success": False, "error": error_msg}
-    
+
     except subprocess.TimeoutExpired:
         return {"success": False, "error": "Simulation timeout (exceeded 10 minutes)"}
     except Exception as e:
